@@ -46,7 +46,7 @@ void indexCmd(WebServer &server, WebServer::ConnectionType type, char *, bool) {
 						"\t\t\t\t<span class=\"icon-bar\"></span>\n"
 						"\t\t\t\t<span class=\"icon-bar\"></span>\n"
 						"\t\t\t</button>\n"
-						"\t\t\t<a class=\"brand\" href=\"https://github.com/lasselukkari/RC-Switch\">Arduino RC Timer Switch</a>\n"
+						"\t\t\t<a class=\"brand\" href=\"https://github.com/lasselukkari/Arduino-RC-Timer-Switch\">Arduino RC Timer Switch</a>\n"
 						"\t\t\t<div class=\"nav-collapse collapse\">\n"
 						"\t\t\t\t<ul class=\"nav\">\n"
 						"\t\t\t\t\t<li class=\"\">\n"
