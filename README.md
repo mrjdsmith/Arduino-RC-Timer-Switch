@@ -1,12 +1,12 @@
 RC-Switch
 =========
 
-Arduino controlling RC switches with JavaScript UI
+Arduino controlling RC switches with JavaScript UI<br />
 
-Features
--Controll cheap 433mHz AC switches with arduino web UI
--Multipurpose JSON REST interface
--Teach devices to arduino by pushing the remote controller buttons
--Remote controller actions are tracked by the arduino
--Timers
+Features<br />
+-Controll cheap 433mHz AC switches with arduino web UI<br />
+-Multipurpose JSON REST interface<br />
+-Teach devices to arduino by pushing the remote controller buttons<br />
+-Remote controller actions are tracked by the arduino<br />
+-Timers<br />
 -Settings saved to a SD card
