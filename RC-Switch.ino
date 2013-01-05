@@ -7,8 +7,6 @@
 #include "aJSON.h"
 #include "RCSwitch.h"
 
-
-
 byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02 };
 WebServer webserver("", 80);
 aJsonObject* devices; // an array of devices: [{"name":"Fan","state":0,"did":1131861,"id":1},...]
@@ -22,6 +20,7 @@ int curday;
 long tempdid = 0;
 char * names[6];
 int scheduler = 0;
+long lastReceivedID = 0;
 
 void indexCmd(WebServer &server, WebServer::ConnectionType type, char *, bool) {
 	server.httpSuccess();
@@ -265,7 +264,7 @@ void checkTimers() {
 
 	while (timerChild) {
 		aJsonObject* stateObject = aJson.getObjectItem(timerChild, "state");
-	
+
 		if (stateObject->valueint == 0) {
 			aJsonObject* timeObject = aJson.getObjectItem(timerChild, "time");
 			aJsonObject* didObject = aJson.getObjectItem(timerChild, "did");
@@ -299,7 +298,7 @@ void checkTimers() {
 					timeToAct = true;
 				}
 			}
-			
+
 			if (timeToAct) {
 				int action = aJson.getObjectItem(timerChild, "action")->valueint;
 
@@ -386,72 +385,76 @@ void checkRadio() {
 
 		if (receivedID) {
 
-			long shiftedID = receivedID >> 2;
-			byte state = receivedID % 2;
+			if (receivedID == lastReceivedID) {
 
-			boolean found = false;
+				long shiftedID = receivedID >> 2;
+				byte state = receivedID % 2;
 
-			for (int i = 0; i < 5; i++) {
+				boolean found = false;
 
-				if (tempdids[i] == shiftedID) {
+				for (int i = 0; i < 5; i++) {
 
-					long maxID = 0;
-					aJsonObject *child = (devices)->child;
-					while (child) {
+					if (tempdids[i] == shiftedID) {
 
-						aJsonObject* didObject = aJson.getObjectItem(child, "did");
-						aJsonObject* idObject = aJson.getObjectItem(child, "id");
+						long maxID = 0;
+						aJsonObject *child = (devices)->child;
+						while (child) {
 
-						long id = 0;
-						long did = 0;
+							aJsonObject* didObject = aJson.getObjectItem(child, "did");
+							aJsonObject* idObject = aJson.getObjectItem(child, "id");
 
-						if ((int) idObject->type == aJson_Int) {
-							id = idObject->valueint;
-						} else if ((int) idObject->type == aJson_Long) {
-							id = idObject->valuelong;
+							long id = 0;
+							long did = 0;
+
+							if ((int) idObject->type == aJson_Int) {
+								id = idObject->valueint;
+							} else if ((int) idObject->type == aJson_Long) {
+								id = idObject->valuelong;
+							}
+
+							if ((int) didObject->type == aJson_Int) {
+								did = didObject->valueint;
+							} else if ((int) didObject->type == aJson_Long) {
+								did = didObject->valuelong;
+							}
+
+							if (id > maxID) {
+								maxID = id;
+							}
+
+							if (did == shiftedID) {
+								aJson.getObjectItem(child, "state")->valueint = state;
+								found = true;
+								break;
+							}
+
+							child = child->next;
 						}
+						if (!found) {
+							aJsonObject* device = aJson.createObject();
+							aJson.addItemToObject(device, "name", aJson.createItem("New Device"));
+							aJson.addNumberToObject(device, "state", (int) state);
+							aJson.addNumberToObject(device, "did", shiftedID);
+							aJson.addNumberToObject(device, "id", maxID + 1);
+							aJson.addItemToArray(devices, device);
 
-						if ((int) didObject->type == aJson_Int) {
-							did = didObject->valueint;
-						} else if ((int) didObject->type == aJson_Long) {
-							did = didObject->valuelong;
+							if (SD.exists("devices.txt")) {
+								SD.remove("devices.txt");
+							}
+
+							file = SD.open("devices.txt", FILE_WRITE);
+							aJson.print(devices, file);
+							file.close();
 						}
-
-						if (id > maxID) {
-							maxID = id;
-						}
-
-						if (did == shiftedID) {
-							aJson.getObjectItem(child, "state")->valueint = state;
-							found = true;
-							break;
-						}
-
-						child = child->next;
 					}
-					if (!found) {
-						aJsonObject* device = aJson.createObject();
-						aJson.addItemToObject(device, "name", aJson.createItem("New Device"));
-						aJson.addNumberToObject(device, "state", (int) state);
-						aJson.addNumberToObject(device, "did", shiftedID);
-						aJson.addNumberToObject(device, "id", maxID + 1);
-						aJson.addItemToArray(devices, device);
 
-						if (SD.exists("devices.txt")) {
-							SD.remove("devices.txt");
-						}
-
-						file = SD.open("devices.txt", FILE_WRITE);
-						aJson.print(devices, file);
-						file.close();
+					tempdids[curindex++] = shiftedID;
+					if (curindex == 5) {
+						curindex = 0;
 					}
-				}
-
-				tempdids[curindex++] = shiftedID;
-				if (curindex == 5) {
-					curindex = 0;
 				}
 			}
+			lastReceivedID = receivedID;
 		}
 	}
 	mySwitch.resetAvailable();
