@@ -1,5 +1,6 @@
 Arduino-RC-Timer-Switch
 =========
+Arduino JSON REST example
 
 Arduino controlling RC switches with JavaScript UI<br />
 
