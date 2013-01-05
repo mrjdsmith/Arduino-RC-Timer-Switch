@@ -1,4 +1,4 @@
-Arduino-RC-Timer-Switch
+Arduino RC Timer Switch
 =========
 Arduino controlling RC switches with JavaScript UI<br />
 
