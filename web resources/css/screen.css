@@ -1,0 +1,127 @@
+
+
+/* Add additional stylesheets below
+-------------------------------------------------- */
+/*
+  Bootstrap's documentation styles
+  Special styles for presenting Bootstrap's documentation and examples
+*/
+
+
+
+/* Body and structure
+-------------------------------------------------- */
+
+body {
+    position: relative;
+    padding-top: 60px;
+}
+
+
+
+.timer-container, .device-container {
+    border: 1px solid #DDD;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+
+}
+
+
+
+/* Change the docs' brand */
+body > .navbar .brand {
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 20px;
+    float: right;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+    -webkit-transition: all .2s linear;
+    -moz-transition: all .2s linear;
+    transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+    text-decoration: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+#add-button{
+    margin: 5px 10px;
+    float:right;
+
+}
+
+
+.control-buttons{
+    float: right;
+}
+
+#timers{
+    clear: both;
+}
+
+.toggle{
+    width: 100%;
+}
+
+
+#add-new-device, #add-new{
+    float: right;
+}
+
+.nav a{
+    font-weight: bold;
+}
+
+
+
+
+
+
+/* Desktop
+------------------------- */
+@media (max-width: 980px) {
+    /* Unfloat brand */
+    body > .navbar-fixed-top .brand {
+        float: left;
+        margin-left: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 979px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+    /* Remove any padding from the body */
+    body {
+        padding-top: 0;
+    }
+
+
+}
+
+/* Landscape phones
+------------------------- */
+@media (max-width: 480px) {
+    /* Remove padding above jumbotron */
+    body {
+        padding-top: 0;
+    }
+
+
+
+}
