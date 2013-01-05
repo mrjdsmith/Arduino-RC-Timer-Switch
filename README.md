@@ -1,7 +1,5 @@
 Arduino-RC-Timer-Switch
 =========
-Arduino JSON REST example
-
 Arduino controlling RC switches with JavaScript UI<br />
 
 - Controll cheap 433mHz AC switches with arduino and web UI<br />
