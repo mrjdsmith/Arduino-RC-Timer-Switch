@@ -10,3 +10,5 @@ Arduino controlling RC switches with JavaScript UI<br />
 - Remote controller actions are tracked by the arduino<br />
 - Timers<br />
 - Settings saved to a SD card
+
+http://www.cs.helsinki.fi/u/ljlukkar/rcswitch
