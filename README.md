@@ -11,4 +11,4 @@ Arduino controlling RC switches with JavaScript UI<br />
 - Timers<br />
 - Settings saved to a SD card
 
-http://www.cs.helsinki.fi/u/ljlukkar/rcswitch
+Dummy test UI: http://www.cs.helsinki.fi/u/ljlukkar/rcswitch
