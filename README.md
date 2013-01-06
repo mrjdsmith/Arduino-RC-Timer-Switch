@@ -1,6 +1,6 @@
 Arduino RC Timer Switch
 =========
-Arduino controlling RC switches with JavaScript UI<br />
+Arduino controlling RC switches with a JavaScript UI<br />
 
 - Controll cheap 433MHz AC switches with arduino and web UI<br />
 - No computer needed as a mediator<br />
