@@ -17,8 +17,12 @@ Dummy test UI: http://www.cs.helsinki.fi/u/ljlukkar/rcswitch
 I used these ones: http://www.clasohlson.com/fi/Pr363570000
 This model has the last two bits of the 24 bit control message set as 0 or 1 to set the state of the switch. Some other models use only the last bit and wont work without changes to the code.
 
-Use with the modified Webduino and aJson libraries.<br />
+Use with the modified Webduino and aJson libraries:<br />
 https://github.com/lasselukkari/Webduino<br />
 https://github.com/lasselukkari/aJson
+
+Other library dependencies:<br />
+http://code.google.com/p/rc-switch/
+https://github.com/adafruit/RTClib
 
 
