@@ -22,7 +22,7 @@ https://github.com/lasselukkari/Webduino<br />
 https://github.com/lasselukkari/aJson
 
 Other library dependencies:<br />
-http://code.google.com/p/rc-switch/
+http://code.google.com/p/rc-switch/<br />
 https://github.com/adafruit/RTClib
 
 
