@@ -25,4 +25,9 @@ Other library dependencies:<br />
 http://code.google.com/p/rc-switch/<br />
 https://github.com/adafruit/RTClib
 
-
+Part list
+========
+- Arduino Mega 2560 or a cheap clone<br />
+- Wiznet W5100 ethernet / SD card reader chield (cheap ones seem to have problems with resetting)<br />
+- 433MHz transmitter and receiver. 2$ shipped from ebay 
+- DS1307 real time clock. 2$ shipped from ebay 
