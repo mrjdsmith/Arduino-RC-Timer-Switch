@@ -14,7 +14,9 @@ Dummy test UI: http://www.cs.helsinki.fi/u/ljlukkar/rcswitch
 
 <img src="http://www.cs.helsinki.fi/u/ljlukkar/rcswitch/board.jpg" />
 
-I used these ones: http://www.clasohlson.com/fi/Pr363570000
+I used these ones: <br />
+http://www.clasohlson.com/fi/Pr363570000<br />
+<img src="http://www.clasohlson.com/medias/sys_master/8871984332830.jpg" /> <img src="http://www.clasohlson.com/medias/sys_master/8871984234526.jpg" /><br />
 This model has the last two bits of the 24 bit control message set as 0 or 1 to set the state of the switch. Some other models use only the last bit and wont work without changes to the code.
 
 Use with the modified Webduino and aJson libraries:<br />
