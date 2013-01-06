@@ -10,7 +10,7 @@
 byte mac[] = { 0x00, 0xAA, 0xBB, 0xCC, 0xDE, 0x02 };
 WebServer webserver("", 80);
 aJsonObject* devices; // an array of devices: [{"name":"Fan","state":0,"did":1131861,"id":1},...]
-aJsonObject* timers; // an array of timers: [{"action":0,"did":1,"name":"Fan Timer","state":0,"time":64320000,"id":1,...}]
+aJsonObject* timers; // an array of timers: [{"action":0,"did":1,"name":"Fan Timer","state":0,"time":64320000,"id":1},...]
 File file;
 RCSwitch mySwitch = RCSwitch();
 int curindex = 0;
