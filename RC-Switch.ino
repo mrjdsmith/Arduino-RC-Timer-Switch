@@ -374,6 +374,7 @@ void checkDayChange() {
 			if (time < 86400000) {
 				aJson.getObjectItem(child, "state")->valueint = 0;
 			}
+			child = child->next;
 		}
 	}
 }
