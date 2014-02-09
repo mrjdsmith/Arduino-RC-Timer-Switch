@@ -1,3 +1,5 @@
+Please note: this project is outdated with the dependencies.
+
 Arduino RC Timer Switch
 =========
 Arduino controlling RC switches with a JavaScript UI<br />
